@@ -11,6 +11,12 @@ resources:
     source:
       uri: https://github.com/antigenius0910/simple-go-web-app.git
 
+  - name: resource-zabbix
+    type: git
+    source:
+      uri: https://github.com/antigenius0910/zabbix.git
+      branch: release/4.0_yen
+
 jobs:
   - name: job-test-app
     public: true
@@ -18,5 +24,6 @@ jobs:
       - get: resource-tutorial
       - get: resource-app
         trigger: true
+      - get: resource-zabbix
       - task: web-app-tests
-        file: resource-tutorial/tutorials/basic/job-inputs/task_run_tests.yml
+        file: resource-zabbix/hack/ci/task_run_tests.yml
